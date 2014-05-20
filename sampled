@@ -1,0 +1,29 @@
+#!/bin/sh
+# chkconfig: 345 99 1
+# description: sampled
+# processname: sampled
+
+start() {
+    echo -n "starting sampled:"
+    /usr/local/sbin/sampled
+    return 0
+}
+
+stop() {
+    killall sampled
+    return 0
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop}"
+        exit 2
+esac
+
+exit 0
